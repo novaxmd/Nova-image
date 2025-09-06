@@ -131,4 +131,37 @@ function generateImage() {
 }
 
 function displayImage(prompt) {
-    const imageUrl =
+    const imageUrl = `https://img.hazex.workers.dev/?prompt=${encodeURIComponent(prompt)}&improve=true&format=square&random=${Math.random()}`;
+    const imageElement = document.getElementById("generatedImage");
+    const regenerateButton = document.getElementById("regenerateButton");
+    const downloadButton = document.getElementById("downloadButton");
+    const telegramLink = document.getElementById("telegramLink");
+
+    // Show spinner animation on image (optional)
+    imageElement.style.display = "none";
+    regenerateButton.style.display = "none";
+    downloadButton.style.display = "none";
+    telegramLink.style.display = "none";
+
+    imageElement.onload = () => {
+        imageElement.style.display = "block";
+        regenerateButton.style.display = "inline-block";
+        downloadButton.style.display = "inline-block";
+        telegramLink.style.display = "inline-block";
+    };
+    imageElement.src = imageUrl;
+}
+
+function downloadImage() {
+    const imageElement = document.getElementById("generatedImage");
+    if (imageElement.src) {
+        const link = document.createElement("a");
+        link.href = imageElement.src;
+        link.download = "zaynix_image.png";
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+    } else {
+        alert("No image to download. Please generate an image first.");
+    }
+}
