@@ -92,34 +92,6 @@ window.addEventListener("resize", ()=>{
     createLines();
 });
 
-// =========== LOADING OVERLAY WITH PROGRESS ===========
-let progress = 0;
-function updateProgressBar() {
-    const bar = document.getElementById('progressBar');
-    const text = document.getElementById('progressText');
-    bar.style.width = progress + "%";
-    text.textContent = "Loading... " + progress + "%";
-}
-function loadingSequence() {
-    progress = 0;
-    updateProgressBar();
-    const interval = setInterval(()=>{
-        progress++;
-        updateProgressBar();
-        if(progress >= 100) {
-            clearInterval(interval);
-            setTimeout(()=>{
-                document.getElementById('loadingOverlay').style.opacity = 0;
-                setTimeout(()=>{
-                    document.getElementById('loadingOverlay').style.display = "none";
-                    document.getElementById('mainApp').style.display = "flex";
-                }, 900); // fade out
-            }, 400);
-        }
-    }, 100); // 10 seconds total
-}
-loadingSequence();
-
 // =========== MAIN APP LOGIC ===========
 function generateImage() {
     const prompt = document.getElementById("promptInput").value.trim();
@@ -137,7 +109,7 @@ function displayImage(prompt) {
     const downloadButton = document.getElementById("downloadButton");
     const telegramLink = document.getElementById("telegramLink");
 
-    // Show spinner animation on image (optional)
+    // Hide elements while loading new image
     imageElement.style.display = "none";
     regenerateButton.style.display = "none";
     downloadButton.style.display = "none";
