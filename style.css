@@ -1,12 +1,35 @@
-/* TECHNOLOGY BACKGROUND: Animated glowing particles and lines with a dark blue/black theme */
+/* TECHNOLOGY BACKGROUND: Animated glowing particles and lines with a dark grey shiny theme */
 body {
     font-family: "Poppins", sans-serif;
     margin: 0;
     min-height: 100vh;
     overflow: hidden;
-    background: #0a1733;
+    background: linear-gradient(135deg, #232526 0%, #414345 100%);
     color: #fff;
 }
+
+/* Top image styling */
+.top-image-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    padding-top: 40px;
+    margin-bottom: 30px;
+    z-index: 3;
+    position: relative;
+}
+.top-image {
+    width: 140px;
+    height: 140px;
+    object-fit: cover;
+    border-radius: 50%;
+    box-shadow: 0 0 25px 5px #fff, 0 0 60px 10px #23252699;
+    border: 4px solid #fff;
+    background: #232526;
+}
+
+/* Canvas background */
 #tech-bg-canvas {
     position: fixed;
     top: 0; left: 0;
@@ -16,15 +39,16 @@ body {
     pointer-events: none;
 }
 
+/* Main container */
 .container {
     position: relative;
     z-index: 2;
     text-align: center;
-    background: rgba(20, 34, 61, 0.70);
+    background: rgba(40, 42, 54, 0.85);
     backdrop-filter: blur(10px);
-    padding: 35px;
-    border-radius: 15px;
-    box-shadow: 0 10px 50px rgba(0, 0, 0, 0.8);
+    padding: 40px 24px;
+    border-radius: 16px;
+    box-shadow: 0 0 32px 0 #232526cc;
     max-width: 420px;
     width: 90%;
     color: #fff;
@@ -33,8 +57,9 @@ body {
     justify-content: center;
     gap: 18px;
     margin: 0 auto;
-    margin-top: 60px;
+    margin-top: 30px;
 }
+
 .container h1 {
     font-size: 30px;
     color: #59eaff;
@@ -42,6 +67,7 @@ body {
     text-transform: uppercase;
     text-shadow: 0 0 18px #59eaff80, 0 0 2px #fff;
 }
+
 input[type="text"] {
     padding: 12px;
     width: 100%;
@@ -54,6 +80,7 @@ input[type="text"] {
     outline: none;
     box-shadow: 0 0 6px #59eaff40;
 }
+
 button {
     padding: 12px;
     width: 100%;
@@ -71,13 +98,15 @@ button:hover {
     background: linear-gradient(45deg, #005bea, #59eaff, #0ff);
     transform: scale(1.05);
 }
-img {
+
+img#generatedImage {
     max-width: 100%;
     margin-top: 20px;
     border-radius: 12px;
     display: none;
     box-shadow: 0 5px 25px #59eaff40;
 }
+
 .telegram-link {
     margin-top: 15px;
     text-decoration: none;
@@ -92,6 +121,7 @@ img {
 .telegram-link:hover {
     transform: scale(1.07);
 }
+
 #downloadButton {
     display: none;
     padding: 12px;
@@ -109,68 +139,22 @@ img {
     background: linear-gradient(45deg, #2e7d32, #4caf50);
     transform: scale(1.05);
 }
+
 .footer {
     margin-top: 15px;
     font-size: 14px;
     opacity: 0.8;
     text-align: center;
 }
-/* LOADING OVERLAY */
-#loadingOverlay {
-    position: fixed;
-    top: 0; left: 0;
-    width: 100vw; height: 100vh;
-    background: linear-gradient(120deg, #0a1733 70%, #1a3a5d 100%);
-    z-index: 10000;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    transition: opacity 0.8s;
-}
-#loadingOverlay .robot-bg {
-    width: 130px;
-    height: 130px;
-    margin-bottom: 36px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-/* Stylized robot face with SVG */
-#loadingOverlay .robot-bg svg {
-    width: 100px;
-    height: 100px;
-    filter: drop-shadow(0 0 16px #59eaffb0);
-}
-/* Progress bar */
-#progressBarContainer {
-    width: 320px;
-    max-width: 80vw;
-    height: 22px;
-    background: rgba(36,59,85,0.8);
-    border-radius: 13px;
-    overflow: hidden;
-    box-shadow: 0 0 18px #59eaff60;
-}
-#progressBar {
-    height: 100%;
-    width: 0%;
-    background: linear-gradient(90deg, #00ff9c 0%, #00eaff 60%, #59eaff 100%);
-    border-radius: 13px 0 0 13px;
-    box-shadow: 0 0 18px #00ff9c88;
-    transition: width 0.2s;
-}
+
+/* Remove loader overlay and progress bar */
+#loadingOverlay,
+#progressBarContainer,
+#progressBar,
 #progressText {
-    color: #59eaff;
-    font-size: 20px;
-    font-family: "Poppins",sans-serif;
-    font-weight: bold;
-    margin-top: 16px;
-    text-shadow: 0 0 8px #59eaff70;
-    letter-spacing: 1px;
-    text-align: center;
+    display: none !important;
 }
+
 @media (max-width: 600px) {
     .container { margin-top: 25px; padding: 17px; }
-    #progressBarContainer { width: 95vw; }
 }
