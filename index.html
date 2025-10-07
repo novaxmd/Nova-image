@@ -11,36 +11,16 @@
 <body>
     <!-- TECHNOLOGY BACKGROUND -->
     <canvas id="tech-bg-canvas"></canvas>
-    <!-- LOADING OVERLAY -->
-    <div id="loadingOverlay">
-        <div class="robot-bg">
-            <!-- Stylized SVG Robot face with blue glow -->
-            <svg viewBox="0 0 110 110" fill="none">
-                <ellipse cx="55" cy="55" rx="50" ry="48" fill="#171f32" stroke="#59eaff" stroke-width="4"/>
-                <ellipse cx="35" cy="55" rx="10" ry="16" fill="#1ea4ff" filter="url(#shadow1)"/>
-                <ellipse cx="75" cy="55" rx="10" ry="16" fill="#1ea4ff" filter="url(#shadow2)"/>
-                <rect x="45" y="80" width="20" height="7" rx="3.5" fill="#0ff"/>
-                <ellipse cx="55" cy="15" rx="8" ry="6" fill="#59eaff"/>
-                <defs>
-                    <filter id="shadow1" x="0" y="0" width="40" height="40">
-                        <feDropShadow dx="0" dy="0" stdDeviation="3" flood-color="#59eaff"/>
-                    </filter>
-                    <filter id="shadow2" x="0" y="0" width="40" height="40">
-                        <feDropShadow dx="0" dy="0" stdDeviation="3" flood-color="#59eaff"/>
-                    </filter>
-                </defs>
-            </svg>
-        </div>
-        <div id="progressBarContainer">
-            <div id="progressBar"></div>
-        </div>
-        <div id="progressText">Loading... 0%</div>
+
+    <!-- Picha yako juu katikati -->
+    <div class="top-image-container">
+        <img src="img/bmb.png" alt="Profile Picture" class="top-image">
     </div>
+
     <!-- MAIN APP -->
-    <div class="container" style="display:none;" id="mainApp">
+    <div class="container" id="mainApp">
         <h1>Nova Image Generator</h1>
         <input type="text" id="promptInput" placeholder="Enter your prompt here" />
-
         <button onclick="generateImage()">Generate Image</button>
         <img id="generatedImage" src="" alt="Generated Image" />
         <button id="regenerateButton" onclick="generateImage()" style="display: none;">Regenerate</button>
